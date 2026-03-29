@@ -1,9 +1,10 @@
+import domotique.Lampe;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * classe de test permettant de tester la classe Lampe
+ * classe de test permettant de tester la classe domotique.Lampe
  */
 public class LampeTest {
 

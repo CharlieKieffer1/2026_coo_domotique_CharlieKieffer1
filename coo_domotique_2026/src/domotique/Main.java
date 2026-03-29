@@ -1,3 +1,5 @@
+package domotique;
+
 import java.util.Scanner;
 
 /**
