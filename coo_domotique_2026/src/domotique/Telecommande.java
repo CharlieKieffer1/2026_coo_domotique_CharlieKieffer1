@@ -18,7 +18,7 @@ public class Telecommande {
         throw new Error("code non écrit");
     }
 
-    public void desactverLampe(int indiceLampe){
+    public void desactiverLampe(int indiceLampe){
         throw new Error("code non écrit");
     }
 
