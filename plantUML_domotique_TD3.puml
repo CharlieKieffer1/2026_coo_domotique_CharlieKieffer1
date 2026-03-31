@@ -1,0 +1,54 @@
+@startuml
+
+package domotique {
+
+class Telecommande {
+    - lampes : ArrayList<Lampe>
+    - hifis : ArrayList<Hifi>
+
+    + Telecommande()
+    + ajouterLampe(nouvelleLampe : Lampe) : void
+    + ajouterHifi(nouvelleHifi : Hifi) : void
+    + activerLampe(indiceLampe : int) : void
+    + activerHifi(indiceHifi : int) : void
+    + desactiverLampe(indiceLampe : int) : void
+    + desactiverHifi(indiceHifi : int) : void
+    + activerTout() : void
+    + getLampe(indiceLampe : int) : Lampe
+    + getHifi(indiceHifi : int) : Hifi
+    + toString() : String
+}
+
+class Lampe {
+    - nom : String
+    - allume : boolean
+
+    + Lampe(paramNom : String)
+    + allumer() : void
+    + eteindre() : void
+    + isAllume() : boolean
+    + toString() : String
+}
+
+class Hifi {
+    - son : int
+
+    + allumer() : void
+    + eteindre() : void
+    + toString() : String
+}
+
+class Main {
+    + main(args : String[]) : void
+}
+
+}
+
+' Relations
+Telecommande "1" o-- "*" Lampe
+Telecommande "1" o-- "*" Hifi
+
+Main --> Telecommande
+Main --> Lampe
+
+@enduml
