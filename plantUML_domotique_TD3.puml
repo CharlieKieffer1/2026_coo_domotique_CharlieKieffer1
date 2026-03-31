@@ -3,17 +3,15 @@
 package domotique {
 
 class Telecommande {
-    - lampes : ArrayList<Lampe>
-    - hifis : ArrayList<Hifi>
 
     + Telecommande()
-    + ajouterLampe(nouvelleLampe : Lampe) : void
-    + ajouterHifi(nouvelleHifi : Hifi) : void
-    + activerLampe(indiceLampe : int) : void
-    + activerHifi(indiceHifi : int) : void
-    + desactiverLampe(indiceLampe : int) : void
-    + desactiverHifi(indiceHifi : int) : void
-    + activerTout() : void
+    + ajouterLampe(nouvelleLampe : Lampe)
+    + ajouterHifi(nouvelleHifi : Hifi)
+    + activerLampe(indiceLampe : int)
+    + activerHifi(indiceHifi : int)
+    + desactiverLampe(indiceLampe : int)
+    + desactiverHifi(indiceHifi : int)
+    + activerTout()
     + getLampe(indiceLampe : int) : Lampe
     + getHifi(indiceHifi : int) : Hifi
     + toString() : String
@@ -24,8 +22,8 @@ class Lampe {
     - allume : boolean
 
     + Lampe(paramNom : String)
-    + allumer() : void
-    + eteindre() : void
+    + allumer()
+    + eteindre()
     + isAllume() : boolean
     + toString() : String
 }
@@ -33,22 +31,15 @@ class Lampe {
 class Hifi {
     - son : int
 
-    + allumer() : void
-    + eteindre() : void
+    + allumer()
+    + eteindre()
     + toString() : String
-}
-
-class Main {
-    + main(args : String[]) : void
 }
 
 }
 
 ' Relations
-Telecommande "1" o-- "*" Lampe
-Telecommande "1" o-- "*" Hifi
-
-Main --> Telecommande
-Main --> Lampe
+Telecommande " 1 " <--- " * " Lampe : -lampes
+Telecommande " 1 " <--- " * " Hifi : -hifis
 
 @enduml
