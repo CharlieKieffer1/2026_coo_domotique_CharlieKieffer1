@@ -16,6 +16,7 @@ public class Main {
 		// utilisation de refactor (extract method)
 		// pour rendre le code plus clair
 		ajouter4Lampes(t);
+		ajouter4Hifi(t);
 
 		// test d'activation
 		t.activerLampe(1);
@@ -37,12 +38,17 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		boolean fini=false;
+
+		String typeAccessoire = "";
 		
 		// tant qu'il y a des commandes
 		while (!fini) {
-			
+
+			System.out.println("entrer commande (lampe/hifi)");
+			typeAccessoire = sc.nextLine();
+
 			// demande lampe et commande
-			System.out.println("entrer le numero de la lampe");
+			System.out.println("entrer le numero de l'accessoire");
 			int choix = sc.nextInt();
 			System.out.println("entrer commande (+/-/exit)");
 			String com = sc.nextLine();
@@ -50,13 +56,24 @@ public class Main {
 
 			// si la commande est +, on active
 			if (com.equals("+")) {
-				System.out.println("== activer "+choix+"==");
-				t.activerLampe(choix);
+				if (typeAccessoire.equals("lampe")) {
+					System.out.println("== activer "+choix+"==");
+					t.activerLampe(choix);
+				} else if (typeAccessoire.equals("hifi")) {
+					System.out.println("== activer "+choix+"==");
+					t.activerHifi(choix);
+				}
+
 			}
-			// si la commande est - on descactive
+			// si la commande est - on desactive
 			else if (com.equals("-")) {
-				System.out.println("== desactiver "+choix+"==");
-				t.desactiverLampe(choix);
+				if (typeAccessoire.equals("lampe")) {
+					System.out.println("== desactiver "+choix+"==");
+					t.desactiverLampe(choix);
+				} else if (typeAccessoire.equals("hifi")) {
+					System.out.println("== desactiver "+choix+"==");
+					t.desactiverLampe(choix);
+				}
 			}
 			// si la commande est exit, on arrete
 			else if (com.equals("exit")) {
@@ -92,6 +109,21 @@ public class Main {
 
 		Lampe l4 = new Lampe("Lampe4");
 		t.ajouterLampe(l4);
+	}
+
+	private static void ajouter4Hifi(Telecommande t) {
+		Hifi h1 = new Hifi();
+		t.ajouterHifi(h1);
+
+		Hifi h2 = new Hifi();
+		t.ajouterHifi(h2);
+
+		Hifi h3 = new Hifi();
+		t.ajouterHifi(h3);
+
+		Hifi h4 = new Hifi();
+		t.ajouterHifi(h4);
+
 	}
 
 }

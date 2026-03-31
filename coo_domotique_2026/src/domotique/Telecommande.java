@@ -115,7 +115,7 @@ public class Telecommande {
     /**
      * Retourne l'Hifi à l'indide indiceHifi dans hifis
      * @param indiceHifi
-     * @return Retourne l'Hifi à l'indide indiceHifi dans hifis 
+     * @return Retourne l'Hifi à l'indide indiceHifi dans hifis
      */
     public Hifi getHifi(int indiceHifi){
         if (indiceHifi < this.hifis.size())
