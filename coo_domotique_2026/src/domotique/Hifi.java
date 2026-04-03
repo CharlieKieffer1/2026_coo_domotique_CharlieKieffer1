@@ -3,7 +3,7 @@ package domotique;
 /**
  * classe qui represente une chaine hifi
  */
-public class Hifi {
+public class Hifi implements Appareil {
 
 	/**
 	 * l'intensite du son de la chaine on suppose que la chaine est eteinte si

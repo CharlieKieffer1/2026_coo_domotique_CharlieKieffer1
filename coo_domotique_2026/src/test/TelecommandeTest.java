@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import domotique.Lampe;
 import domotique.Telecommande;
+import domotique.Appareil;
 import org.junit.Test;
 
 /**
@@ -18,8 +19,8 @@ public class TelecommandeTest {
     public void testAjouter() {
         Telecommande telecommande=new Telecommande();
         Lampe nouvelleLampe = new Lampe("test");
-        telecommande.ajouterLampe(nouvelleLampe);
-        assertEquals("il devrait y avoir une lampe",telecommande.getLampe(0),nouvelleLampe);
+        telecommande.ajouterAppareil(nouvelleLampe);
+        assertEquals("il devrait y avoir une lampe",telecommande.getAppareil(0),nouvelleLampe);
     }
 
     /**
@@ -28,7 +29,7 @@ public class TelecommandeTest {
     @Test
     public void testVide() {
         Telecommande telecommande=new Telecommande();
-        assertEquals("il ne devrait y avoir rien",telecommande.getLampe(0),null);
+        assertEquals("il ne devrait y avoir rien",telecommande.getAppareils().size(),0);
     }
 
     /**
@@ -37,9 +38,10 @@ public class TelecommandeTest {
     @Test
     public void testAllumer() {
         Telecommande telecommande=new Telecommande();
-        telecommande.ajouterLampe(new Lampe("test"));
-        telecommande.activerLampe(0);
-        boolean lampeAllumee = telecommande.getLampe(0).isAllume();
+        telecommande.ajouterAppareil(new Lampe("test"));
+        telecommande.activerAppareil(0);
+        Lampe lampe = (Lampe) telecommande.getAppareil(0);
+        boolean lampeAllumee = lampe.isAllume();
         assertTrue("la lampe devrait etre allumee",lampeAllumee);
     }
 
@@ -49,9 +51,10 @@ public class TelecommandeTest {
     @Test
     public void testAllumerHorsTableau() {
         Telecommande telecommande=new Telecommande();
-        telecommande.ajouterLampe(new Lampe("test"));
-        telecommande.activerLampe(1);
-        boolean lampeAllumee = telecommande.getLampe(0).isAllume();
+        telecommande.ajouterAppareil(new Lampe("test"));
+        telecommande.activerAppareil(1);
+        Lampe lampe = (Lampe) telecommande.getAppareil(0);
+        boolean lampeAllumee = lampe.isAllume();
         assertTrue("la lampe devrait rester eteinte",!lampeAllumee);
     }
 

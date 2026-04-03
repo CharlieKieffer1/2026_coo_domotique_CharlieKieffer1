@@ -1,126 +1,100 @@
 package domotique;
 
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * classe pour gerer une telecommande universelle
+ *
+ */
 public class Telecommande {
 
     /**
-     * @lampes : liste des lampes de la télécommande
+     * il s'agit desormais d'une liste d'appareils -> il faut changer la classe
+     * (a la main) -> il faut changer le nom (refactoring)
      */
-    private ArrayList<Lampe> lampes;
+    private List<Appareil> appareils;
 
     /**
-     * @hifis : liste des hifis de la télécommande
+     * le construceur bouge un peu
      */
-    private ArrayList<Hifi>  hifis;
-
-    /**
-     * @construstor class télécommande
-     */
-    public Telecommande(){
-        lampes = new  ArrayList<>();
-        hifis = new  ArrayList<>();
+    public Telecommande() {
+        appareils = new ArrayList<Appareil>();
     }
 
     /**
-     * Ajout d'une lampe dans lampes
-     * @param nouvelleLampe
+     * la methode doit changer puisqu'on ajouter des appareil changer le nom de
+     * la methode en refactoring
+     *
+     * @param p
+     *            appareil a ajouter
      */
-    public void ajouterLampe(Lampe nouvelleLampe){
-        this.lampes.add(nouvelleLampe);
+    public void ajouterAppareil(Appareil p) {
+        appareils.add(p);
     }
 
     /**
-     * Ajout d'une hifi dans hifis
-     * @param nouvelleHifi
+     * renommer la methode en activerAppareil
+     *
+     * @param i
+     *            indice de l'appareil a modifier
      */
-    public void ajouterHifi(Hifi nouvelleHifi){
-        this.hifis.add(nouvelleHifi);
+    public void activerAppareil(int i) {
+        try {
+            appareils.get(i).allumer();
+        }
+        catch(IndexOutOfBoundsException ex){
+            System.out.println("Hors liste, on ne fait rien");
+        }
+
     }
 
     /**
-     * Active la lampe à l'indice indiceLampe dans lampes
-     * @param indiceLampe
+     * renommer en activerAppareil
+     *
+     * @param i
+     *            indice de l'appareil a desactiver
      */
-    public void activerLampe(int indiceLampe){
-        if (indiceLampe < this.lampes.size())
-            this.lampes.get(indiceLampe).allumer();
+    public void desactiverAppareil(int i) {
+        appareils.get(i).eteindre();
     }
 
     /**
-     * Active l'Hifi à l'indice IndiceHifi dans hifis
-     * @param indiceHifi
+     * ne change pas
      */
-    public void activerHifi(int indiceHifi){
-        if(indiceHifi < this.hifis.size())
-            this.hifis.get(indiceHifi).allumer();
-    }
-
-    /**
-     * Désactive la lampe à l'indice indiceLampe dans lampes
-     * @param indiceLampe
-     */
-    public void desactiverLampe(int indiceLampe){
-        if (indiceLampe < this.lampes.size())
-            this.lampes.get(indiceLampe).eteindre();
-    }
-
-    /**
-     * Désactive l'Hifi à l'indice IndiceHifi dans hifis
-     * @param indiceHifi
-     */
-    public void desactiverHifi(int indiceHifi){
-        if (indiceHifi < this.hifis.size())
-            this.hifis.get(indiceHifi).eteindre();
-    }
-
-    /**
-     * Active toutes les lampes et tout les hifis
-     */
-    public void activerTout(){
-        for (int i = 0; i < this.lampes.size(); i++)
+    public void activerTout() {
+        for (int i = 0; i < appareils.size(); i++)
             // reutiliser du code existant
-            this.activerLampe(i);
-        for (int i = 0; i < this.hifis.size(); i++)
-            this.activerHifi(i);
+            activerAppareil(i);
+    }
+
+    /**
+     * ne change pas implique de redefinir tostring dans les classes concretes
+     * issues de appareil
+     */
+    public String toString() {
+        String r = "";
+        for (int i = 0; i < appareils.size(); i++) {
+            r = r + appareils.get(i) + "\n";
+        }
+        return (r);
     }
 
     /**
      *
-     * @return la description de la télécommande
+     * @param i
+     * @return l'appareil à l'indice i
      */
-    public String toString(){
-        String descriptif = "";
-        for (int i = 0; i < this.lampes.size(); i++) {
-            descriptif += i + "-" + this.lampes.get(i) + "\n";
-        }
-        for (int i = 0; i < this.hifis.size(); i++) {
-            descriptif += i + "-" + this.hifis.get(i) + "\n";
-        }
-        return (descriptif);
+    public Appareil getAppareil(int i) {
+        return appareils.get(i);
     }
 
     /**
-     * Retourne la lampe à l'indice indiceLampe dans lampes
-     * @param indiceLampe
-     * @return Retourne la lampe à l'indice indiceLampe dans lampes
+     *
+     * @return la liste d'appareils
      */
-    public Lampe getLampe(int indiceLampe){
-        if (indiceLampe < this.lampes.size())
-            return (this.lampes.get(indiceLampe));
-        else
-            return(null);
+    public List<Appareil> getAppareils() {
+        return appareils;
     }
 
-    /**
-     * Retourne l'Hifi à l'indide indiceHifi dans hifis
-     * @param indiceHifi
-     * @return Retourne l'Hifi à l'indide indiceHifi dans hifis
-     */
-    public Hifi getHifi(int indiceHifi){
-        if (indiceHifi < this.hifis.size())
-            return (this.hifis.get(indiceHifi));
-        else
-            return(null);
-    }
 }
