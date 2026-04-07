@@ -88,7 +88,7 @@ class Thermostat {
 }
 
 ' Relations
-Telecommande " 1 " <--- " * " Appareil : -Appareils
+Telecommande " 1 " ---> " * " Appareil : - appareils
 Cheminee " 1 " <--- " 1 " AdapterCheminee : -chemineeAadapter
 Thermostat " 1 " <--- " 1 " AdapterThermostat : -thermosAadapter
 
