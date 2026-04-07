@@ -54,6 +54,16 @@ class Cheminee {
 }
 
 class AdapterCheminee {
+
+    + AdapterCheminee()
+    + allumer()
+    + eteindre()
+    + toString() : String
+}
+
+class AdapterThermostat {
+    
+    + AdapterThermostat()
     + allumer()
     + eteindre()
     + toString() : String
@@ -61,11 +71,31 @@ class AdapterCheminee {
 
 }
 
+package thermos {
+
+class Thermostat {
+
+    - temperature : int
+    
+    + Thermostat()
+    + paint(g : Graphics)
+    + monterTemperature()
+    + baisserTemperature()
+    + getTemperature() : int
+    + toString() : String
+    
+
+}
+
 ' Relations
 Telecommande " 1 " <--- " * " Appareil : -Appareils
 Cheminee " 1 " <--- " 1 " AdapterCheminee : -chemineeAadapter
+Thermostat " 1 " <--- " 1 " AdapterThermostat : -thermosAadapter
+
 Lampe ..|> Appareil
 Hifi ..|> Appareil
 AdapterCheminee ..|> Appareil
+AdapterThermostat ..|> Appareil
+
 
 @enduml
