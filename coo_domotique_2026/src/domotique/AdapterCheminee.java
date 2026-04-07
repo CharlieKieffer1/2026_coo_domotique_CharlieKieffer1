@@ -14,8 +14,7 @@ public class AdapterCheminee implements Appareil {
 	
 	@Override
 	public void allumer() {
-		int lumiere = this.chemineeAControler.getLumiere() + 10;
-		this.chemineeAControler.changerIntensite(lumiere);
+		this.chemineeAControler.changerIntensite(this.chemineeAControler.getIntensite()+10);
 	}
 
 	@Override
@@ -26,6 +25,6 @@ public class AdapterCheminee implements Appareil {
 	
 	public String toString()
 	{
-		return(""+chemineeAControler);
+		return(""+chemineeAControler.toString());
 	}
 }

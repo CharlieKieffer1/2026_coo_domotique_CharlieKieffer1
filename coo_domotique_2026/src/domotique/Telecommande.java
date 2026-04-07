@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * classe pour gerer une telecommande universelle
- * @author thomas8
  *
  */
 public class Telecommande {

@@ -14,7 +14,7 @@ public class Cheminee {
 	 * intensite de la cheminee modulable par le variateur
 	 * valeur comprise entre 0 et 100;
 	 */
-	int intensite;
+	private int intensite;
 
 	/**
 	 * constructeur par defaut
@@ -39,7 +39,7 @@ public class Cheminee {
 	 * retourne l'intensite de la cheminee
 	 * @return intensite de la cheminee
 	 */
-	public int getLumiere()
+	public int getIntensite()
 	{
 		return this.intensite;
 	}
