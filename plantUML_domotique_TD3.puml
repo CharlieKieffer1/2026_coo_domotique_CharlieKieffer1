@@ -17,6 +17,12 @@ class Telecommande {
     + toString() : String
 }
 
+interface Appareil { 
+    + allumer()
+    + eteindre()
+    + toString() : String
+}
+
 class Lampe {
     - nom : String
     - allume : boolean
@@ -36,10 +42,30 @@ class Hifi {
     + toString() : String
 }
 
+class Cheminee {
+
+    - intensite : int 
+    
+    + Cheminee()
+    + changerIntensite(intensite : int) 
+    + getIntensite() : int
+    + toString() : String
+
+}
+
+class AdapterCheminee {
+    + allumer()
+    + eteindre()
+    + toString() : String
+}
+
 }
 
 ' Relations
-Telecommande " 1 " <--- " * " Lampe : -lampes
-Telecommande " 1 " <--- " * " Hifi : -hifis
+Telecommande " 1 " <--- " * " Appareil : -Appareils
+Cheminee " 1 " <--- " 1 " AdapterCheminee : -chemineeAadapter
+Lampe ..|> Appareil
+Hifi ..|> Appareil
+AdapterCheminee ..|> Appareil
 
 @enduml
