@@ -5,96 +5,89 @@ import java.util.List;
 
 /**
  * classe pour gerer une telecommande universelle
+ * @author thomas8
  *
  */
 public class Telecommande {
 
     /**
-     * il s'agit desormais d'une liste d'appareils -> il faut changer la classe
-     * (a la main) -> il faut changer le nom (refactoring)
+     * il s'agit desormais d'une liste d'appareil
+     * -> il faut changer la classe (a la main)
+     * -> il faut changer le nom (refactoring)
      */
     private List<Appareil> appareils;
 
     /**
      * le construceur bouge un peu
      */
-    public Telecommande() {
-        appareils = new ArrayList<Appareil>();
+    public Telecommande()
+    {
+        appareils=new ArrayList<Appareil>();
     }
 
     /**
-     * la methode doit changer puisqu'on ajouter des appareil changer le nom de
-     * la methode en refactoring
+     * la methode doit changer puisqu'on ajouter des appareil
+     * changer le nom de la methode en refactoring
      *
-     * @param p
-     *            appareil a ajouter
+     * @param p appareil
      */
-    public void ajouterAppareil(Appareil p) {
+    public void ajouterAppareil(Appareil p)
+    {
         appareils.add(p);
     }
 
     /**
      * renommer la methode en activerAppareil
-     *
      * @param i
-     *            indice de l'appareil a modifier
      */
-    public void activerAppareil(int i) {
-        try {
-            appareils.get(i).allumer();
-        }
-        catch(IndexOutOfBoundsException ex){
-            System.out.println("Hors liste, on ne fait rien");
-        }
-
+    public void activerAppareil(int i)
+    {
+        appareils.get(i).allumer();
     }
+
 
     /**
      * renommer en activerAppareil
-     *
      * @param i
-     *            indice de l'appareil a desactiver
      */
-    public void desactiverAppareil(int i) {
+    public void desactiverAppareil(int i)
+    {
         appareils.get(i).eteindre();
     }
+
 
     /**
      * ne change pas
      */
-    public void activerTout() {
-        for (int i = 0; i < appareils.size(); i++)
-            // reutiliser du code existant
+    public void activerTout()
+    {
+        for (int i=0;i<appareils.size();i++)
+            //reutiliser du code existant
             activerAppareil(i);
     }
 
+
+
     /**
-     * ne change pas implique de redefinir tostring dans les classes concretes
-     * issues de appareil
+     * ne change pas
+     * implique de redefinir tostring dans les classes concretes issues de appareil
      */
-    public String toString() {
-        String r = "";
-        for (int i = 0; i < appareils.size(); i++) {
-            r = r + appareils.get(i) + "\n";
+    public String toString()
+    {
+        String r="";
+        for (int i=0;i<appareils.size();i++)
+        {
+            r=r+appareils.get(i)+"\n";
         }
-        return (r);
+        return(r);
     }
 
     /**
-     *
-     * @param i
-     * @return l'appareil à l'indice i
+     * retourne le nombre d'appareils
+     * @return
      */
-    public Appareil getAppareil(int i) {
-        return appareils.get(i);
-    }
-
-    /**
-     *
-     * @return la liste d'appareils
-     */
-    public List<Appareil> getAppareils() {
-        return appareils;
+    public int getNombre() {
+        return this.appareils.size();
     }
 
 }
