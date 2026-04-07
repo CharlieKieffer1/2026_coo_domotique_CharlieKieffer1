@@ -21,8 +21,8 @@ public class Main {
 		Hifi hifi=new Hifi();
 		t.ajouterAppareil(hifi);
 
-		Lumiere lumiere=new Lumiere();
-		AdapterLumiere adpt=new AdapterLumiere(lumiere);
+		Cheminee ch =new Cheminee();
+		AdapterCheminee adpt=new AdapterCheminee(ch);
 		t.ajouterAppareil(adpt);
 		// FinTODO
 
